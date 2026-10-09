@@ -18,4 +18,9 @@ public class ProductWebController {
         model.addAttribute("products", productService.findAll(null));
         return "products/list";
     }
+
+    @GetMapping("/products/new")
+    public String form() {
+        return "products/form";
+    }
 }
