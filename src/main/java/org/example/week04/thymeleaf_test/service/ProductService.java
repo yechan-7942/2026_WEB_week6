@@ -19,7 +19,7 @@ public class ProductService {
     }
 
     public ProductResponse create(ProductRequest request) {
-        Product product = new Product(null, request.name(), request.category(), request.count(), request.price(), request.day());
+        Product product = new Product(null, request.name(), request.category(), request.quantity(), request.price(), request.expirationDate());
         return ProductResponse.from(repository.save(product));
     }
 
@@ -39,9 +39,9 @@ public class ProductService {
         Product product = findProduct(id);
         product.setName(request.name());
         product.setCategory(request.category());
-        product.setCount(request.count());
+        product.setQuantity(request.quantity());
         product.setPrice(request.price());
-        product.setDay(request.day());
+        product.setExpirationDate(request.expirationDate());
         return ProductResponse.from(repository.update(product));
     }
 

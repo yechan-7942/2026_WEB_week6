@@ -1,22 +1,24 @@
 package org.example.week04.thymeleaf_test.domain;
 
+import java.time.LocalDate;
+
 public class Product {
     private String id;
     private String name;
     private String category;
-    private String count;
+    private int quantity;
     private int price;
-    private int day;
+    private LocalDate expirationDate;
 
     public Product() {
     }
-    public Product(String id, String name, String category, String count, int price, int day) {
+    public Product(String id, String name, String category, int quantity, int price, LocalDate expirationDate) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.count = count;
+        this.quantity = quantity;
         this.price = price;
-        this.day = day;
+        this.expirationDate = expirationDate;
     }
 
     public String getId() {
@@ -31,16 +33,16 @@ public class Product {
         return category;
     }
 
-    public String getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public int getDay() {
-        return day;
+    public LocalDate getExpirationDate() {
+        return expirationDate;
     }
 
     public void setId(String id) {
@@ -55,15 +57,15 @@ public class Product {
         this.category = category;
     }
 
-    public void setCount(String count) {
-        this.count = count;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setPrice(int price) {
         this.price = price;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

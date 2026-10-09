@@ -2,16 +2,18 @@ package org.example.week04.thymeleaf_test.dto;
 
 import org.example.week04.thymeleaf_test.domain.Product;
 
-public record ProductResponse(String id, String name, String category, String count, int price, int day) {
+import java.time.LocalDate;
+
+public record ProductResponse(String id, String name, String category, int quantity, int price, LocalDate expirationDate) {
 
     public static ProductResponse from(Product product) {
         return new ProductResponse(
                 product.getId(),
                 product.getName(),
                 product.getCategory(),
-                product.getCount(),
+                product.getQuantity(),
                 product.getPrice(),
-                product.getDay()
+                product.getExpirationDate()
         );
     }
 }
