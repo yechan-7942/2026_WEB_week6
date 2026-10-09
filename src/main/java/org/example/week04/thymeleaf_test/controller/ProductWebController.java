@@ -2,6 +2,8 @@ package org.example.week04.thymeleaf_test.controller;
 
 import org.example.week04.thymeleaf_test.service.ProductService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ProductWebController {
@@ -9,5 +11,11 @@ public class ProductWebController {
 
     public ProductWebController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @GetMapping("/products")
+    public String list(Model model) {
+        model.addAttribute("products", productService.findAll(null));
+        return "products/list";
     }
 }
