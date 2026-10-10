@@ -1,9 +1,12 @@
 package org.example.week04.thymeleaf_test.controller;
 
+import org.example.week04.thymeleaf_test.dto.ProductRequest;
 import org.example.week04.thymeleaf_test.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProductWebController {
@@ -22,5 +25,11 @@ public class ProductWebController {
     @GetMapping("/products/new")
     public String form() {
         return "products/form";
+    }
+
+    @PostMapping("/products")
+    public String create(@ModelAttribute ProductRequest request) {
+        productService.create(request);
+        return "redirect:/products";
     }
 }
