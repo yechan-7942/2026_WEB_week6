@@ -4,7 +4,7 @@ import org.example.week04.thymeleaf_test.domain.Product;
 
 import java.time.LocalDate;
 
-public record ProductResponse(String id, String name, String category, int quantity, int price, LocalDate expirationDate) {
+public record ProductResponse(Long id, String name, String category, int quantity, int price, LocalDate expirationDate) {
 
     public static ProductResponse from(Product product) {
         return new ProductResponse(

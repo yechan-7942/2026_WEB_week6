@@ -31,11 +31,11 @@ public class ProductService {
                 .toList();
     }
 
-    public ProductResponse findById(String id) {
+    public ProductResponse findById(Long id) {
         return ProductResponse.from(findProduct(id));
     }
 
-    public ProductResponse update(String id, ProductRequest request) {
+    public ProductResponse update(Long id, ProductRequest request) {
         Product product = findProduct(id);
         product.setName(request.name());
         product.setCategory(request.category());
@@ -45,12 +45,12 @@ public class ProductService {
         return ProductResponse.from(repository.update(product));
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         findProduct(id);
         repository.deleteById(id);
     }
 
-    private Product findProduct(String id) {
+    private Product findProduct(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found: " + id));
     }

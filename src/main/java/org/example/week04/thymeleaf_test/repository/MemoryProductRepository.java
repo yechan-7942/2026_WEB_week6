@@ -4,14 +4,16 @@ import org.example.week04.thymeleaf_test.domain.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class MemoryProductRepository implements ProductRepository {
-    private final Map<String, Product> products = new LinkedHashMap<>();
+    private final Map<Long, Product> products = new LinkedHashMap<>();
+    private final AtomicLong sequence = new AtomicLong();
 
     @Override
     public Product save(Product product) {
-        product.setId(UUID.randomUUID().toString());
+        product.setId(sequence.incrementAndGet());
         products.put(product.getId(), product);
         return product;
     }
@@ -22,7 +24,7 @@ public class MemoryProductRepository implements ProductRepository {
     }
 
     @Override
-    public Optional<Product> findById(String id) {
+    public Optional<Product> findById(Long id) {
         return Optional.ofNullable(products.get(id));
     }
 
@@ -33,7 +35,7 @@ public class MemoryProductRepository implements ProductRepository {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         products.remove(id);
     }
 }

@@ -3,7 +3,7 @@ package org.example.week04.thymeleaf_test.domain;
 import java.time.LocalDate;
 
 public class Product {
-    private String id;
+    private Long id;
     private String name;
     private String category;
     private int quantity;
@@ -12,7 +12,7 @@ public class Product {
 
     public Product() {
     }
-    public Product(String id, String name, String category, int quantity, int price, LocalDate expirationDate) {
+    public Product(Long id, String name, String category, int quantity, int price, LocalDate expirationDate) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -21,7 +21,7 @@ public class Product {
         this.expirationDate = expirationDate;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -45,7 +45,7 @@ public class Product {
         return expirationDate;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
