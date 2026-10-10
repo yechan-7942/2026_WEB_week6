@@ -30,6 +30,7 @@ public class ProductWebController {
     @PostMapping("/products")
     public String create(@ModelAttribute ProductRequest request) {
         productService.create(request);
+        // PRG: 등록 후 redirect하여 새로고침 시 중복 등록 방지
         return "redirect:/products";
     }
 }
